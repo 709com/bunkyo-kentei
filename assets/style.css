@@ -9,9 +9,11 @@
   --ai:#24427a;      /* 藍：選択・強調 */
   --soft:#eef1f6;    /* うすい藍 */
   --green:#2f8a55; --red:#c4453a; --gold:#a8821f; --yellow:#f2cd4f;
+  /* フォントは1種類に統一（先生の指示 2026-10-26）。明朝は題字と合格証だけ */
   --title:'Zen Old Mincho','Hiragino Mincho ProN','Yu Mincho',serif;
-  --head:'Zen Maru Gothic','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif;
-  --bd:'BIZ UDPGothic','Hiragino Sans','Yu Gothic',sans-serif;
+  --font:'Zen Maru Gothic','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif;
+  --head:var(--font);
+  --bd:var(--font);
   --dp:var(--head);
   color-scheme:light;
 }
@@ -25,7 +27,7 @@
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--bd);font-size:16px;line-height:1.75;
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--bd);font-weight:500;font-size:16px;line-height:1.75;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   padding-block:18px 40px;min-height:100vh;overflow-x:hidden}
 /* わくの はばは いつも おなじ */
@@ -62,7 +64,7 @@ nav.tabs button:focus-visible{outline:3px solid var(--ai);outline-offset:-3px}
 .lv{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
   border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:10px 14px;font-family:var(--bd);transition:border-color .12s,background .12s}
 .lv:hover,.lv:focus-visible{border-color:var(--ai);background:var(--soft);outline:none}
-.lv .num{font-family:var(--title);font-weight:700;font-size:1.5rem;width:2.2em;height:2.2em;display:grid;place-items:center;border:1.5px solid var(--ink);border-radius:6px;line-height:1}
+.lv .num{font-family:var(--font);font-weight:700;font-size:1.5rem;width:2.2em;height:2.2em;display:grid;place-items:center;border:1.5px solid var(--ink);border-radius:6px;line-height:1}
 .lv .name{font-family:var(--head);font-weight:700;font-size:1.1rem;line-height:1.6}
 .lv .sub{display:block;font-size:.82rem;color:var(--sub);font-weight:400;line-height:1.6}
 .lv .go{color:var(--sub);font-size:1.2rem}
@@ -73,7 +75,7 @@ nav.tabs button:focus-visible{outline:3px solid var(--ai);outline-offset:-3px}
 .rules{font-size:.88rem;margin:14px 0 0;padding-top:10px;border-top:1px dashed var(--line);display:grid;gap:4px;color:var(--sub)}
 .rules p{margin:0}
 .zero{font-family:var(--head);font-weight:700;font-size:1rem;margin:12px 0 0;display:flex;justify-content:space-between;align-items:baseline;border:1.5px solid var(--ink);border-radius:8px;padding:6px 14px}
-.zero b{font-family:var(--title);font-size:1.6rem;color:var(--red)}
+.zero b{font-family:var(--font);font-size:1.6rem;color:var(--red)}
 .note{font-size:.84rem;color:var(--sub)}
 
 /* 問題 */
@@ -112,7 +114,7 @@ nav.tabs button:focus-visible{outline:3px solid var(--ai);outline-offset:-3px}
 /* 結果（ここだけ はなやかに） */
 .result{text-align:center}
 .result .lvl{color:var(--sub);margin:0;font-family:var(--head);font-weight:700}
-.result .big{font-family:var(--title);font-weight:700;font-size:2.6rem;line-height:1.4;margin:4px 0}
+.result .big{font-family:var(--font);font-weight:700;font-size:2.6rem;line-height:1.4;margin:4px 0}
 .result .score{font-size:1rem;color:var(--sub);margin:0}
 .result .msg{margin:6px 0 0}
 .namebox{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);text-align:left;display:grid;gap:6px}
@@ -131,14 +133,15 @@ input[type=text]:focus-visible{outline:3px solid var(--ai);outline-offset:1px}
 .meibo li{font-size:.95rem}
 .meibo li small{color:var(--sub);font-variant-numeric:tabular-nums}
 .meibo .one{text-align:center;font-family:var(--head);font-weight:700;font-size:1.1rem;padding:10px 0;border:1.5px solid var(--ink);border-radius:8px}
-.meibo .one b{font-family:var(--title);font-size:2.6rem;color:var(--red);display:block;line-height:1.3}
+.meibo .one b{font-family:var(--font);font-size:2.6rem;color:var(--red);display:block;line-height:1.3}
 
 /* よくある質問 */
 .faq dl{margin:0}
-.faq dt{font-family:var(--head);font-weight:700;font-size:1rem;margin-top:14px;display:flex;gap:8px}
-.faq dt::before{content:"問";font-family:var(--title);color:var(--ai)}
-.faq dd{margin:4px 0 0;display:flex;gap:8px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
-.faq dd::before{content:"答";font-family:var(--title);color:var(--red);flex:none}
+/* 問・答の印は、ふりがなの下の本文の行にそろえる（baseline） */
+.faq dt{font-family:var(--head);font-weight:700;font-size:1rem;margin-top:14px;display:flex;align-items:baseline;gap:8px}
+.faq dt::before{content:"問";font-weight:700;color:var(--ai);flex:none}
+.faq dd{margin:4px 0 0;display:flex;align-items:baseline;gap:8px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.faq dd::before{content:"答";font-weight:700;color:var(--red);flex:none}
 
 /* 今日の一問 */
 .ichimon .when{font-family:var(--head);font-weight:500;color:var(--sub);margin:0 0 4px;font-size:.88rem}
