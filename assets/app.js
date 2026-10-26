@@ -129,7 +129,9 @@ function start(n) {
   set = shuffle([...(BANK[n] || [])]).slice(0, PER).map(it => ({ it, order: shuffle([0, 1, 2]) }));
   if (set.length < PER) return;
   $("home").hidden = true; $("result").hidden = true; $("quiz").hidden = false;
-  say("chara-home", "quiz");
+  document.body.classList.add("quizmode");
+  // スマホの「もどる」で きゅう えらびに もどれるように
+  if (!(history.state && history.state.quiz)) { try { history.pushState({ quiz: 1 }, ""); } catch { } }
   show(); window.scrollTo({ top: 0 });
 }
 function show() {
@@ -160,6 +162,7 @@ function finish() {
   const L = LEVELS[cur], s = hits.filter(Boolean).length, pass = s >= L.pass;
   last = { level: cur, score: s, pass, qids: set.map(x => x.it.id), answers: picks.slice(), registered: false };
   $("quiz").hidden = true; $("result").hidden = false;
+  document.body.classList.remove("quizmode");
   $("certwrap").hidden = true; $("regmsg").hidden = true; $("regmsg").className = "reg";
   $("name").value = ""; $("name").disabled = false; $("nanoru").disabled = false; $("hp").value = "";
   $("rlevel").textContent = `ぶんきょうくみんけんてい ${L.name}`;
@@ -237,7 +240,10 @@ $("nameform").addEventListener("submit", async ev => {
 });
 $("retry").addEventListener("click", () => start(cur));
 $("back").addEventListener("click", goHome);
-function goHome() {
+window.addEventListener("popstate", () => { if (!$("quiz").hidden || !$("result").hidden) goHome(true); });
+function goHome(fromBack) {
+  if (fromBack !== true && history.state && history.state.quiz) { history.back(); return; }
+  document.body.classList.remove("quizmode");
   $("quiz").hidden = true; $("result").hidden = true; $("home").hidden = false;
   say("chara-home", "home"); buildLevels(); window.scrollTo({ top: 0 });
 }

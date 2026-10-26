@@ -14,6 +14,7 @@
   --green:#6fcf8f; --red:#f08a7e; --yellow:#f7df7a; --soft:#343c3a; --gold:#e0b85a; color-scheme:dark }
 
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--bd);
   background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);
@@ -132,6 +133,10 @@ input[type=text]{font-family:var(--bd);font-size:1.05rem;padding:8px 10px;border
 .bubble{position:relative;border:2px solid var(--ink);background:var(--paper);font-family:var(--dp);font-size:.95rem;
   padding:4px 10px;border-radius:14px 14px 14px 2px;line-height:1.4;white-space:nowrap;flex:none}
 header.top .chara svg{width:56px;height:56px}
+
+/* しゅつだいちゅうは もんだい だけ */
+body.quizmode header.top, body.quizmode #devbanner, body.quizmode nav.tabs,
+body.quizmode #chara-home, body.quizmode footer{display:none}
 
 footer{font-size:.85rem;color:var(--pencil);text-align:center;display:grid;gap:6px}
 footer nav{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center}
