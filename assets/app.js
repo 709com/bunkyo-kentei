@@ -140,7 +140,7 @@ const BATSU = `<svg viewBox="0 0 64 64" fill="none" stroke="var(--red)" stroke-w
 function judgeHtml(ok, it, shake) {
   const w = ok ? pick(["正解[せいかい]", "お見事[みごと]", "さすが"]) : pick(["残念[ざんねん]", "惜[お]しい", "うーん"]);
   const src = safeUrl(it.src) ? `<div class="src"><a href="${esc(it.src)}" target="_blank" rel="noopener">${ruby("出典[しゅってん]")}</a>${it.note ? `（${esc(it.note)}）` : ""}</div>` : "";
-  return `<div class="judge ${!ok && shake ? "shake" : ""}">${ok ? MARU : BATSU}<div><div>${ruby(w)}</div><div class="exp">${esc(it.e)}</div>${src}</div></div>`;
+  return `<div class="judge ${!ok && shake ? "shake" : ""}">${ok ? MARU : BATSU}<div><div>${ruby(w)}</div><div class="exp">${ruby(it.e)}</div>${src}</div></div>`;
 }
 
 let cur = null, idx = 0, set = [], picks = [], hits = [];
