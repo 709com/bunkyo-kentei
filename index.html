@@ -3,44 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>ぶんきょうくみんけんてい</title>
+<title>文京区民検定｜ぶんきょうくみんけんてい</title>
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="ごうかくしても なにも もらえない けんてい。1きゅうは まだ だれも うかっていない。">
+<meta name="description" content="合格しても何ももらえない検定。1級はまだ誰も受かっていない。">
 <meta property="og:type" content="website">
-<meta property="og:title" content="ぶんきょうくみんけんてい">
-<meta property="og:description" content="ごうかくしても なにも もらえない けんてい。1きゅうは まだ だれも うかっていない。">
+<meta property="og:title" content="文京区民検定（ぶんきょうくみんけんてい）">
+<meta property="og:description" content="合格しても何ももらえない検定。1級はまだ誰も受かっていない。">
 <meta property="og:url" content="https://bunkyo-kentei.jp/">
 <meta property="og:image" content="https://bunkyo-kentei.jp/assets/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yomogi&family=Klee+One:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Old+Mincho:wght@700&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 <div class="wrap">
   <header class="top">
-    <h1><a href="./">ぶんきょうくみんけんてい</a><small>ごうかくしても なにも もらえません</small></h1>
+    <h1><a href="./"><ruby>文京区民検定<rt>ぶんきょうくみんけんてい</rt></ruby></a></h1>
+    <p class="tagline"><ruby>合格<rt>ごうかく</rt></ruby>しても<ruby>何<rt>なに</rt></ruby>ももらえません</p>
   </header>
 
-  <div id="devbanner" class="devbanner" hidden>しさくばん（もんだいは かくにんちゅう）</div>
+  <div id="devbanner" class="devbanner" hidden><ruby>試作版<rt>しさくばん</rt></ruby>（<ruby>問題<rt>もんだい</rt></ruby>は<ruby>確認中<rt>かくにんちゅう</rt></ruby>）</div>
 
-  <nav class="tabs" role="tablist" aria-label="ページの きりかえ">
-    <button role="tab" id="tab-kentei" aria-controls="p-kentei" aria-selected="true">けんてい</button>
-    <button role="tab" id="tab-meibo" aria-controls="p-meibo" aria-selected="false">めいぼ</button>
-    <button role="tab" id="tab-faq" aria-controls="p-faq" aria-selected="false">しつもん</button>
+  <nav class="tabs" role="tablist" aria-label="ページの切りかえ">
+    <button role="tab" id="tab-kentei" aria-controls="p-kentei" aria-selected="true"><ruby>検定<rt>けんてい</rt></ruby></button>
+    <button role="tab" id="tab-meibo" aria-controls="p-meibo" aria-selected="false"><ruby>名簿<rt>めいぼ</rt></ruby></button>
+    <button role="tab" id="tab-faq" aria-controls="p-faq" aria-selected="false"><ruby>質問<rt>しつもん</rt></ruby></button>
   </nav>
 
-  <!-- けんてい タブ -->
+  <!-- 検定 タブ -->
   <div id="p-kentei" role="tabpanel" aria-labelledby="tab-kentei" class="wrap">
 
     <div class="chara" id="chara-home"></div>
 
     <section id="home" class="wrap">
       <section class="box soft ichimon" id="ichimon" hidden>
-        <div class="tape"></div>
-        <h2>きょうの いちもん</h2>
+        <h2><ruby>今日<rt>きょう</rt></ruby>の<ruby>一問<rt>いちもん</rt></ruby></h2>
         <p class="when" id="im-when"></p>
         <p class="q" id="im-q"></p>
         <div class="choices" id="im-choices"></div>
@@ -48,15 +48,14 @@
       </section>
 
       <section class="box">
-        <div class="tape"></div>
-        <h2>なんきゅうを うける？</h2>
-        <div class="steps" aria-label="うけかた"><span>えらぶ</span><span class="arrow">→</span><span>こたえる</span><span class="arrow">→</span><span>なのる</span></div>
+        <h2><ruby>何級<rt>なんきゅう</rt></ruby>を<ruby>受<rt>う</rt></ruby>ける？</h2>
+        <div class="steps" aria-label="受け方"><span><ruby>選<rt>えら</rt></ruby>ぶ</span><span><ruby>答<rt>こた</rt></ruby>える</span><span><ruby>名乗<rt>なの</rt></ruby>る</span></div>
         <div class="levels" id="levels"></div>
         <div class="rules">
-          <p>もんだいは ぜんぶ 3たく。10もんちゅう 7もん せいかいで ごうかく。1きゅうは ぜんもん せいかい。</p>
-          <p>うえの きゅうに うかったら じどうで しょうかく。したの きゅうは なのらなくて いい。</p>
+          <p><ruby>問題<rt>もんだい</rt></ruby>はすべて3<ruby>択<rt>たく</rt></ruby>。10<ruby>問中<rt>もんちゅう</rt></ruby>7<ruby>問<rt>もん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>で<ruby>合格<rt>ごうかく</rt></ruby>。1<ruby>級<rt>きゅう</rt></ruby>は<ruby>全問<rt>ぜんもん</rt></ruby><ruby>正解<rt>せいかい</rt></ruby>で<ruby>合格<rt>ごうかく</rt></ruby>。</p>
+          <p><ruby>上<rt>うえ</rt></ruby>の<ruby>級<rt>きゅう</rt></ruby>に<ruby>受<rt>う</rt></ruby>かったら<ruby>自動<rt>じどう</rt></ruby>で<ruby>昇格<rt>しょうかく</rt></ruby>。<ruby>下<rt>した</rt></ruby>の<ruby>級<rt>きゅう</rt></ruby>は<ruby>名乗<rt>なの</rt></ruby>らなくていい。</p>
         </div>
-        <p class="zero">1きゅう ごうかくしゃ：いまのところ <b id="zero-count">0</b>にん</p>
+        <p class="zero"><span>1<ruby>級<rt>きゅう</rt></ruby> <ruby>合格者<rt>ごうかくしゃ</rt></ruby>（いまのところ）</span><span><b id="zero-count">0</b><ruby>人<rt>にん</rt></ruby></span></p>
         <p class="note" id="mybest" hidden></p>
       </section>
     </section>
@@ -69,77 +68,75 @@
       <div id="judge" aria-live="polite"></div>
       <div class="row end" style="margin-top:16px">
         <button class="btn ghost" id="quit" type="button">やめる</button>
-        <button class="btn" id="next" type="button" hidden>つぎへ</button>
+        <button class="btn" id="next" type="button" hidden></button>
       </div>
     </section>
 
-    <section id="result" class="box soft result" hidden>
+    <section id="result" class="box result" hidden>
       <p class="lvl" id="rlevel"></p>
       <p class="big" id="rbig"></p>
       <p class="score" id="rscore"></p>
       <p class="msg" id="rmsg"></p>
 
       <form class="namebox" id="nameform" autocomplete="off">
-        <label for="name" id="namelabel">ニックネームで なのる</label>
+        <label for="name" id="namelabel"></label>
         <div class="row">
-          <input type="text" id="name" maxlength="12" placeholder="12もじ まで" aria-describedby="namehint">
-          <button class="btn" id="nanoru" type="submit">なのる</button>
+          <input type="text" id="name" maxlength="12" placeholder="12文字まで" aria-describedby="namehint">
+          <button class="btn" id="nanoru" type="submit"></button>
         </div>
-        <span class="note" id="namehint">ほんみょうは かかないでね。めいぼに のります。</span>
-        <div class="hp" aria-hidden="true"><label>のこして ください<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
+        <span class="note" id="namehint"></span>
+        <div class="hp" aria-hidden="true"><label>空のままにしてください<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
       </form>
       <p class="reg" id="regmsg" aria-live="polite" hidden></p>
 
       <div class="certwrap" id="certwrap" hidden>
         <img id="certimg" alt="">
         <div class="row center" style="margin-top:10px">
-          <a class="btn ghost" id="certdl" download="bunkyo-kentei.png">がぞうで ほぞん</a>
+          <a class="btn ghost" id="certdl" download="bunkyo-kentei.png"><ruby>画像<rt>がぞう</rt></ruby>で<ruby>保存<rt>ほぞん</rt></ruby></a>
         </div>
-        <p class="note">ほぞん できないときは、がぞうを ながおし するか スクリーンショットで。</p>
+        <p class="note"><ruby>保存<rt>ほぞん</rt></ruby>できないときは、<ruby>画像<rt>がぞう</rt></ruby>を<ruby>長押<rt>ながお</rt></ruby>しするかスクリーンショットで。</p>
       </div>
 
       <div class="row center" style="margin-top:14px">
         <button class="btn ghost" id="copy" type="button"></button>
-        <a class="btn ghost" id="xpost" target="_blank" rel="noopener">Xに かく</a>
+        <a class="btn ghost" id="xpost" target="_blank" rel="noopener">Xに<ruby>投稿<rt>とうこう</rt></ruby></a>
       </div>
       <div class="row center" style="margin-top:14px">
-        <button class="btn ghost" id="retry" type="button">もういちど</button>
-        <button class="btn" id="back" type="button">きゅうを えらぶ</button>
+        <button class="btn ghost" id="retry" type="button">もう<ruby>一度<rt>いちど</rt></ruby></button>
+        <button class="btn" id="back" type="button"><ruby>級<rt>きゅう</rt></ruby>を<ruby>選<rt>えら</rt></ruby>ぶ</button>
       </div>
     </section>
   </div>
 
-  <!-- めいぼ タブ -->
+  <!-- 名簿 タブ -->
   <section id="p-meibo" role="tabpanel" aria-labelledby="tab-meibo" class="box meibo" hidden>
-    <div class="tape"></div>
     <div class="chara" id="chara-meibo"></div>
-    <h2>くみん めいぼ</h2>
-    <p class="note">きゅうごとに あたらしい じゅん。50にんまで のせています。</p>
-    <div id="meibo-body"><p class="note">よみこみちゅう…</p></div>
+    <h2><ruby>区民<rt>くみん</rt></ruby><ruby>名簿<rt>めいぼ</rt></ruby></h2>
+    <p class="note"><ruby>級<rt>きゅう</rt></ruby>ごとに<ruby>新<rt>あたら</rt></ruby>しい<ruby>順<rt>じゅん</rt></ruby>。50<ruby>人<rt>にん</rt></ruby>まで<ruby>載<rt>の</rt></ruby>せています。</p>
+    <div id="meibo-body"><p class="note"><ruby>読<rt>よ</rt></ruby>み<ruby>込<rt>こ</rt></ruby>み<ruby>中<rt>ちゅう</rt></ruby>…</p></div>
   </section>
 
-  <!-- しつもん タブ -->
+  <!-- 質問 タブ -->
   <section id="p-faq" role="tabpanel" aria-labelledby="tab-faq" class="box faq" hidden>
-    <div class="tape"></div>
     <div class="chara" id="chara-faq"></div>
-    <h2>よくある しつもん</h2>
+    <h2>よくある<ruby>質問<rt>しつもん</rt></ruby></h2>
     <dl>
-      <dt>くみんじゃなくても うけていい？</dt>
-      <dd>はい。ぶんきょうくに すんでいなくても うけられます。くみんは きもちの もんだいです。</dd>
-      <dt>なにか もらえる？</dt>
-      <dd>なにも もらえません。</dd>
-      <dt>1きゅうは だれか うかった？</dt>
-      <dd id="faq-one">いまのところ だれも うかっていません。10もん ぜんぶ せいかいで ごうかくです。</dd>
-      <dt>なんかいでも うけていい？</dt>
-      <dd>はい。もんだいは まいかい いれかわります。</dd>
-      <dt>もんだいは どこから？</dt>
-      <dd>ぜんぶ くや とうきょうとなどの こうかい しりょうに しゅってんが あります。こたえると しゅってんへの リンクが でます。</dd>
-      <dt>まちがいを みつけた</dt>
-      <dd><a class="formlink-report" href="#">まちがいを みつけた</a> から おしえてください。</dd>
-      <dt>もんだいを おくりたい</dt>
-      <dd><a class="formlink-submit" href="#">もんだいを おくる</a> から どうぞ。しゅってんの URL が ひつようです。</dd>
-      <dt>なまえを けしてほしい</dt>
-      <dd><a class="formlink-report" href="#">まちがいを みつけた</a> から「なまえを けしてほしい」と おくってください。かくにんして ひょうじを けします。</dd>
+      <dt><span><ruby>区民<rt>くみん</rt></ruby>じゃなくても<ruby>受<rt>う</rt></ruby>けていい？</span></dt>
+      <dd><span>はい。<ruby>文京区<rt>ぶんきょうく</rt></ruby>に<ruby>住<rt>す</rt></ruby>んでいなくても<ruby>受<rt>う</rt></ruby>けられます。<ruby>区民<rt>くみん</rt></ruby>は<ruby>気持<rt>きも</rt></ruby>ちの<ruby>問題<rt>もんだい</rt></ruby>です。</span></dd>
+      <dt><span><ruby>何<rt>なに</rt></ruby>かもらえる？</span></dt>
+      <dd><span><ruby>何<rt>なに</rt></ruby>ももらえません。</span></dd>
+      <dt><span>1<ruby>級<rt>きゅう</rt></ruby>は<ruby>誰<rt>だれ</rt></ruby>か<ruby>受<rt>う</rt></ruby>かった？</span></dt>
+      <dd><span id="faq-one">いまのところ<ruby>誰<rt>だれ</rt></ruby>も<ruby>受<rt>う</rt></ruby>かっていません。10<ruby>問<rt>もん</rt></ruby>すべて<ruby>正解<rt>せいかい</rt></ruby>で<ruby>合格<rt>ごうかく</rt></ruby>です。</span></dd>
+      <dt><span><ruby>何回<rt>なんかい</rt></ruby>でも<ruby>受<rt>う</rt></ruby>けていい？</span></dt>
+      <dd><span>はい。<ruby>問題<rt>もんだい</rt></ruby>は<ruby>毎回<rt>まいかい</rt></ruby><ruby>入<rt>い</rt></ruby>れかわります。</span></dd>
+      <dt><span><ruby>問題<rt>もんだい</rt></ruby>はどこから？</span></dt>
+      <dd><span>すべて<ruby>区<rt>く</rt></ruby>や<ruby>東京都<rt>とうきょうと</rt></ruby>などの<ruby>公開資料<rt>こうかいしりょう</rt></ruby>に<ruby>出典<rt>しゅってん</rt></ruby>があります。<ruby>答<rt>こた</rt></ruby>えると<ruby>出典<rt>しゅってん</rt></ruby>へのリンクが<ruby>出<rt>で</rt></ruby>ます。</span></dd>
+      <dt><span><ruby>間違<rt>まちが</rt></ruby>いを<ruby>見<rt>み</rt></ruby>つけた</span></dt>
+      <dd><span><a class="formlink-report" href="#"><ruby>間違<rt>まちが</rt></ruby>いを<ruby>見<rt>み</rt></ruby>つけた</a>から<ruby>教<rt>おし</rt></ruby>えてください。</span></dd>
+      <dt><span><ruby>問題<rt>もんだい</rt></ruby>を<ruby>送<rt>おく</rt></ruby>りたい</span></dt>
+      <dd><span><a class="formlink-submit" href="#"><ruby>問題<rt>もんだい</rt></ruby>を<ruby>送<rt>おく</rt></ruby>る</a>からどうぞ。<ruby>出典<rt>しゅってん</rt></ruby>のURLが<ruby>必要<rt>ひつよう</rt></ruby>です。</span></dd>
+      <dt><span><ruby>名前<rt>なまえ</rt></ruby>を<ruby>消<rt>け</rt></ruby>してほしい</span></dt>
+      <dd><span><a class="formlink-report" href="#"><ruby>間違<rt>まちが</rt></ruby>いを<ruby>見<rt>み</rt></ruby>つけた</a>から「<ruby>名前<rt>なまえ</rt></ruby>を<ruby>消<rt>け</rt></ruby>してほしい」と<ruby>送<rt>おく</rt></ruby>ってください。<ruby>確認<rt>かくにん</rt></ruby>して<ruby>表示<rt>ひょうじ</rt></ruby>を<ruby>消<rt>け</rt></ruby>します。</span></dd>
     </dl>
   </section>
 
@@ -147,10 +144,10 @@
     <nav>
       <a href="about.html">このサイトについて</a>
       <a href="privacy.html">プライバシーポリシー</a>
-      <a class="formlink-report" href="#">まちがいを みつけた</a>
-      <a class="formlink-submit" href="#">もんだいを おくる</a>
+      <a class="formlink-report" href="#">間違いを見つけた</a>
+      <a class="formlink-submit" href="#">問題を送る</a>
     </nav>
-    <span class="patrol" id="patrol" hidden>じゅんかい おやすみちゅう</span>
+    <span class="patrol" id="patrol" hidden>見回りお休み中</span>
   </footer>
 </div>
 <script src="assets/config.js"></script>
