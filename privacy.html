@@ -65,7 +65,7 @@
 <script>
 (() => { const C = window.KENTEI_CONFIG || {};
   const ch = (window.KENTEI_CHARAS || {})[C.CHARA]; const el = document.getElementById("chara");
-  if (ch) { el.innerHTML = ch.svg + '<span class="bubble">だいじな ことを かいたよ</span>'; el.setAttribute("aria-hidden", "true"); } else el.hidden = true;
+  if (ch) { el.innerHTML = ch.svg + '<span class="bubble"><ruby>大事<rt>だいじ</rt></ruby>なことを<ruby>書<rt>か</rt></ruby>いたよ</span>'; el.setAttribute("aria-hidden", "true"); } else el.hidden = true;
   document.querySelectorAll(".formlink-report").forEach(a => { if (C.FORM_REPORT) { a.href = C.FORM_REPORT; a.target = "_blank"; a.rel = "noopener"; } });
 })();
 </script>
