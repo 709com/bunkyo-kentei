@@ -1,0 +1,53 @@
+name: build-questions
+
+on:
+  schedule:
+    - cron: "0 19 * * *"   # 毎日 日本時間 4:00（巡回 3:00 のあと）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-questions
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 停止期間かどうか確認
+        id: freeze
+        run: |
+          if python scripts/freeze_check.py; then echo "ok=1" >> "$GITHUB_OUTPUT"; else echo "ok=0" >> "$GITHUB_OUTPUT"; fi
+
+      - name: 問題を作る
+        if: steps.freeze.outputs.ok == '1'
+        env:
+          GAS_EXPORT_URL: ${{ secrets.GAS_EXPORT_URL }}
+          EXPORT_TOKEN: ${{ secrets.EXPORT_TOKEN }}
+        run: |
+          if [ -z "$GAS_EXPORT_URL" ] || [ -z "$EXPORT_TOKEN" ]; then
+            echo "まだ GAS の設定がないので、きょうは問題を更新しません"
+            exit 0
+          fi
+          python scripts/build_questions.py
+
+      - name: 変わっていれば保存
+        if: steps.freeze.outputs.ok == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add questions/
+          if git diff --cached --quiet; then
+            echo "変更なし"
+          else
+            git commit -m "もんだいを こうしん"
+            git push
+          fi

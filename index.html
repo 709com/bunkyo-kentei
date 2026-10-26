@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ぶんきょうくみんけんてい</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="ごうかくしても なにも もらえない けんてい。1きゅうは まだ だれも うかっていない。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ぶんきょうくみんけんてい">
+<meta property="og:description" content="ごうかくしても なにも もらえない けんてい。1きゅうは まだ だれも うかっていない。">
+<meta property="og:url" content="https://bunkyo-kentei.jp/">
+<meta property="og:image" content="https://bunkyo-kentei.jp/assets/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yomogi&family=Klee+One:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1><a href="./">ぶんきょうくみんけんてい</a><small>ごうかくしても なにも もらえません</small></h1>
+  </header>
+
+  <div id="devbanner" class="devbanner" hidden>しさくばん（もんだいは かくにんちゅう）</div>
+
+  <nav class="tabs" role="tablist" aria-label="ページの きりかえ">
+    <button role="tab" id="tab-kentei" aria-controls="p-kentei" aria-selected="true">けんてい</button>
+    <button role="tab" id="tab-meibo" aria-controls="p-meibo" aria-selected="false">めいぼ</button>
+    <button role="tab" id="tab-faq" aria-controls="p-faq" aria-selected="false">しつもん</button>
+  </nav>
+
+  <!-- けんてい タブ -->
+  <div id="p-kentei" role="tabpanel" aria-labelledby="tab-kentei" class="wrap">
+
+    <div class="chara" id="chara-home"></div>
+
+    <section id="home" class="wrap">
+      <section class="box soft ichimon" id="ichimon" hidden>
+        <div class="tape"></div>
+        <h2>きょうの いちもん</h2>
+        <p class="when" id="im-when"></p>
+        <p class="q" id="im-q"></p>
+        <div class="choices" id="im-choices"></div>
+        <div id="im-judge"></div>
+      </section>
+
+      <section class="box">
+        <div class="tape"></div>
+        <h2>なんきゅうを うける？</h2>
+        <div class="steps" aria-label="うけかた"><span>えらぶ</span><span class="arrow">→</span><span>こたえる</span><span class="arrow">→</span><span>なのる</span></div>
+        <div class="levels" id="levels"></div>
+        <div class="rules">
+          <p>もんだいは ぜんぶ 3たく。10もんちゅう 7もん せいかいで ごうかく。1きゅうは ぜんもん せいかい。</p>
+          <p>うえの きゅうに うかったら じどうで しょうかく。したの きゅうは なのらなくて いい。</p>
+        </div>
+        <p class="zero">1きゅう ごうかくしゃ：いまのところ <b id="zero-count">0</b>にん</p>
+        <p class="note" id="mybest" hidden></p>
+      </section>
+    </section>
+
+    <section id="quiz" class="box" hidden>
+      <div class="bar" id="bar"></div>
+      <p class="qnum" id="qnum"></p>
+      <p class="q" id="qtext"></p>
+      <div class="choices" id="choices"></div>
+      <div id="judge" aria-live="polite"></div>
+      <div class="row end" style="margin-top:16px">
+        <button class="btn ghost" id="quit" type="button">やめる</button>
+        <button class="btn" id="next" type="button" hidden>つぎへ</button>
+      </div>
+    </section>
+
+    <section id="result" class="box soft result" hidden>
+      <p class="lvl" id="rlevel"></p>
+      <p class="big" id="rbig"></p>
+      <p class="score" id="rscore"></p>
+      <p class="msg" id="rmsg"></p>
+
+      <form class="namebox" id="nameform" autocomplete="off">
+        <label for="name" id="namelabel">ニックネームで なのる</label>
+        <div class="row">
+          <input type="text" id="name" maxlength="12" placeholder="12もじ まで" aria-describedby="namehint">
+          <button class="btn" id="nanoru" type="submit">なのる</button>
+        </div>
+        <span class="note" id="namehint">ほんみょうは かかないでね。めいぼに のります。</span>
+        <div class="hp" aria-hidden="true"><label>のこして ください<input type="text" id="hp" tabindex="-1" autocomplete="off"></label></div>
+      </form>
+      <p class="reg" id="regmsg" aria-live="polite" hidden></p>
+
+      <div class="certwrap" id="certwrap" hidden>
+        <img id="certimg" alt="">
+        <div class="row center" style="margin-top:10px">
+          <a class="btn ghost" id="certdl" download="bunkyo-kentei.png">がぞうで ほぞん</a>
+        </div>
+        <p class="note">ほぞん できないときは、がぞうを ながおし するか スクリーンショットで。</p>
+      </div>
+
+      <div class="row center" style="margin-top:14px">
+        <button class="btn ghost" id="copy" type="button"></button>
+        <a class="btn ghost" id="xpost" target="_blank" rel="noopener">Xに かく</a>
+      </div>
+      <div class="row center" style="margin-top:14px">
+        <button class="btn ghost" id="retry" type="button">もういちど</button>
+        <button class="btn" id="back" type="button">きゅうを えらぶ</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- めいぼ タブ -->
+  <section id="p-meibo" role="tabpanel" aria-labelledby="tab-meibo" class="box meibo" hidden>
+    <div class="tape"></div>
+    <div class="chara" id="chara-meibo"></div>
+    <h2>くみん めいぼ</h2>
+    <p class="note">きゅうごとに あたらしい じゅん。50にんまで のせています。</p>
+    <div id="meibo-body"><p class="note">よみこみちゅう…</p></div>
+  </section>
+
+  <!-- しつもん タブ -->
+  <section id="p-faq" role="tabpanel" aria-labelledby="tab-faq" class="box faq" hidden>
+    <div class="tape"></div>
+    <div class="chara" id="chara-faq"></div>
+    <h2>よくある しつもん</h2>
+    <dl>
+      <dt>くみんじゃなくても うけていい？</dt>
+      <dd>はい。ぶんきょうくに すんでいなくても うけられます。くみんは きもちの もんだいです。</dd>
+      <dt>なにか もらえる？</dt>
+      <dd>なにも もらえません。</dd>
+      <dt>1きゅうは だれか うかった？</dt>
+      <dd id="faq-one">いまのところ だれも うかっていません。10もん ぜんぶ せいかいで ごうかくです。</dd>
+      <dt>なんかいでも うけていい？</dt>
+      <dd>はい。もんだいは まいかい いれかわります。</dd>
+      <dt>もんだいは どこから？</dt>
+      <dd>ぜんぶ くや とうきょうとなどの こうかい しりょうに しゅってんが あります。こたえると しゅってんへの リンクが でます。</dd>
+      <dt>まちがいを みつけた</dt>
+      <dd><a class="formlink-report" href="#">まちがいを みつけた</a> から おしえてください。</dd>
+      <dt>もんだいを おくりたい</dt>
+      <dd><a class="formlink-submit" href="#">もんだいを おくる</a> から どうぞ。しゅってんの URL が ひつようです。</dd>
+      <dt>なまえを けしてほしい</dt>
+      <dd><a class="formlink-report" href="#">まちがいを みつけた</a> から「なまえを けしてほしい」と おくってください。かくにんして ひょうじを けします。</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <nav>
+      <a href="about.html">このサイトについて</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a class="formlink-report" href="#">まちがいを みつけた</a>
+      <a class="formlink-submit" href="#">もんだいを おくる</a>
+    </nav>
+    <span class="patrol" id="patrol" hidden>じゅんかい おやすみちゅう</span>
+  </footer>
+</div>
+<script src="assets/config.js"></script>
+<script src="assets/chara.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

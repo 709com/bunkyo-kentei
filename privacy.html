@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>プライバシーポリシー｜ぶんきょうくみんけんてい</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="ぶんきょうくみんけんていの プライバシーポリシー。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yomogi&family=Klee+One:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1><a href="./">ぶんきょうくみんけんてい</a><small>ごうかくしても なにも もらえません</small></h1>
+  </header>
+
+  <main class="box doc">
+    <div class="tape"></div>
+    <div class="chara" id="chara"></div>
+    <h2>プライバシーポリシー</h2>
+
+    <h2>あずかる じょうほう</h2>
+    <p>ごうかくして「なのる」を おしたとき だけ、つぎの じょうほうを あずかります。</p>
+    <ul>
+      <li>ニックネーム</li>
+      <li>うけた きゅう と てんすう</li>
+      <li>なのった にちじ</li>
+    </ul>
+    <p>このサイトは、IPアドレスや たんまつの じょうほうを あつめたり ほぞんしたり しません。ふごうかくの ときや「なのる」を おさない ときは、なにも おくりません。</p>
+
+    <h2>あなたの たんまつに のこす じょうほう</h2>
+    <p>いままでで いちばん うえの しょうごう だけを、ブラウザの なかに のこします（Cookie は つかいません）。きえても こまりません。</p>
+
+    <h2>つかいみち</h2>
+    <ul>
+      <li>くみん めいぼに のせる ため だけに つかいます。</li>
+      <li>ほかの ひとや かいしゃに わたしません。</li>
+      <li>こうこくは ありません。アクセスかいせきも いれていません（いれる ときは ここに かきます）。</li>
+    </ul>
+
+    <h2>つかっている そとの サービス</h2>
+    <p>サイトは GitHub Pages に おいています。もじの かたちは Google Fonts を、めいぼの しくみは Google の サービスを つかっています。ページを ひらいたり なのったり すると、これらの サービスとの あいだで つうしんが おきるので、それぞれの かいしゃの きまりも かかわります。</p>
+
+    <h2>なまえを けしてほしい とき</h2>
+    <p><a class="formlink-report" href="#">まちがいを みつけた</a> の フォームから「なまえを けしてほしい」と おくってください。かくにんして、めいぼから ひょうじを けします。ほんみょう らしい なまえや、ひとを きずつける なまえは、たのまれなくても ひょうじを けす ことが あります。</p>
+
+    <h2>せきにんしゃ</h2>
+    <p>たかはま なおき</p>
+
+    <p class="note">せいてい：【こうかいびを いれる】</p>
+  </main>
+
+  <footer>
+    <nav>
+      <a href="./">けんていに もどる</a>
+      <a href="about.html">このサイトについて</a>
+      <a class="formlink-report" href="#">まちがいを みつけた</a>
+    </nav>
+  </footer>
+</div>
+<script src="assets/config.js"></script>
+<script src="assets/chara.js"></script>
+<script>
+(() => { const C = window.KENTEI_CONFIG || {};
+  const ch = (window.KENTEI_CHARAS || {})[C.CHARA]; const el = document.getElementById("chara");
+  if (ch) { el.innerHTML = ch.svg + '<span class="bubble">だいじな ことを かいたよ</span>'; el.setAttribute("aria-hidden", "true"); } else el.hidden = true;
+  document.querySelectorAll(".formlink-report").forEach(a => { if (C.FORM_REPORT) { a.href = C.FORM_REPORT; a.target = "_blank"; a.rel = "noopener"; } });
+})();
+</script>
+</body>
+</html>

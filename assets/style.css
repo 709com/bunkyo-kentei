@@ -1,0 +1,160 @@
+/* ぶんきょうくみんけんてい 共通スタイル（試作 bunkyo-kentei.html を正とする） */
+:root{
+  --paper:#fffdf6; --ink:#2b2a28; --pencil:#6f7d93; --line:#cfd6e2;
+  --green:#3f9e60; --red:#d9584b; --yellow:#f4d35e; --soft:#f1f6ee; --gold:#b8892b;
+  --dp:'Yomogi','Klee One','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif;
+  --bd:'Klee One','Hiragino Maru Gothic ProN','Yu Gothic',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#2a2f33; --ink:#f3efe4; --pencil:#aab4c2; --line:#4b5560;
+  --green:#6fcf8f; --red:#f08a7e; --yellow:#f7df7a; --soft:#343c3a; --gold:#e0b85a; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --paper:#2a2f33; --ink:#f3efe4; --pencil:#aab4c2; --line:#4b5560;
+  --green:#6fcf8f; --red:#f08a7e; --yellow:#f7df7a; --soft:#343c3a; --gold:#e0b85a; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--bd);
+  background-image:repeating-linear-gradient(transparent 0 31px,var(--line) 31px 32px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:20px 40px;min-height:100vh;line-height:1.7;overflow-x:hidden}
+.wrap{max-width:520px;margin:0 auto;display:grid;gap:20px}
+h1,h2,h3,.dp{font-family:var(--dp);text-wrap:balance;font-weight:400}
+a{color:inherit}
+header.top{display:flex;align-items:flex-end;gap:10px;justify-content:space-between}
+h1{font-size:2rem;margin:0;line-height:1.2;transform:rotate(-1.5deg)}
+h1 a{text-decoration:none}
+h1 small{display:block;font-size:.95rem;color:var(--pencil);transform:rotate(1deg);margin-top:4px}
+
+/* てがき の わく */
+.box{border:2.5px solid var(--ink);background:var(--paper);padding:18px;
+  border-radius:255px 15px 225px 15px/15px 225px 15px 255px;position:relative}
+.box.soft{background:var(--soft)}
+.box h2{margin:0 0 10px;font-size:1.3rem}
+.tape{position:absolute;top:-10px;left:22px;width:70px;height:20px;background:var(--yellow);
+  opacity:.8;transform:rotate(-6deg);border-radius:2px}
+
+/* タブ */
+nav.tabs{display:flex;gap:8px}
+nav.tabs button{flex:1;font-family:var(--dp);font-size:1.1rem;padding:8px 4px;border:2.5px solid var(--ink);
+  background:var(--paper);color:var(--ink);cursor:pointer;border-radius:15px 255px 15px 225px/225px 15px 255px 15px}
+nav.tabs button:nth-child(2){border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+nav.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+nav.tabs button:focus-visible{outline:3px dashed var(--pencil);outline-offset:3px}
+
+/* きゅう えらび */
+.levels{display:grid;gap:10px}
+.lv{display:flex;align-items:center;gap:12px;border:2.5px solid var(--ink);background:var(--paper);width:100%;
+  padding:12px 14px;font-family:var(--dp);font-size:1.25rem;cursor:pointer;color:var(--ink);text-align:left;
+  border-radius:15px 255px 15px 225px/225px 15px 255px 15px;transition:transform .12s}
+.lv:nth-child(even){border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+.lv:hover,.lv:focus-visible{transform:rotate(-1deg) scale(1.02);outline:none;background:var(--soft)}
+.lv .num{font-size:1.9rem;line-height:1;min-width:2.2em}
+.lv .sub{font-family:var(--bd);font-size:.85rem;color:var(--pencil);display:block}
+.lv[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+.steps{display:flex;gap:6px;align-items:center;justify-content:center;font-family:var(--dp);font-size:1.15rem;margin:4px 0 10px;flex-wrap:wrap}
+.steps span.arrow{color:var(--pencil)}
+.rules{font-size:.9rem;margin:12px 0 0;display:grid;gap:4px}
+.rules p{margin:0}
+.zero{font-family:var(--dp);font-size:1.05rem;text-align:center;margin:10px 0 0}
+.zero b{font-weight:400;font-size:1.5rem;color:var(--red)}
+
+/* もんだい */
+.q{font-size:1.2rem;line-height:2.1;margin:0 0 14px;overflow-wrap:anywhere}
+ruby rt{font-size:.55em;color:var(--pencil)}
+.qnum{font-family:var(--dp);color:var(--pencil);font-size:1rem;margin:0 0 6px}
+.choices{display:grid;gap:10px}
+.ch{border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);font-family:var(--bd);font-size:1.1rem;
+  padding:11px 14px;text-align:left;cursor:pointer;display:flex;gap:10px;align-items:center;width:100%;line-height:1.9;
+  border-radius:12px 200px 12px 180px/180px 12px 200px 12px}
+.ch:nth-child(2){border-radius:200px 12px 180px 12px/12px 180px 12px 200px}
+.ch:hover,.ch:focus-visible{background:var(--soft);outline:none}
+.ch .mk{font-family:var(--dp);min-width:1.6em;color:var(--pencil)}
+.ch.ok{border-color:var(--green);background:color-mix(in srgb,var(--green) 18%,var(--paper))}
+.ch.ng{border-color:var(--red);background:color-mix(in srgb,var(--red) 18%,var(--paper))}
+.ch[disabled]{cursor:default}
+.judge{display:flex;align-items:center;gap:14px;margin-top:14px;font-family:var(--dp);font-size:1.3rem}
+.judge svg{width:60px;height:60px;flex:none}
+.judge .exp{font-family:var(--bd);font-size:.95rem;color:var(--pencil);line-height:1.6}
+.judge .src{font-family:var(--bd);font-size:.85rem}
+.bar{display:flex;gap:4px;margin-bottom:10px}
+.bar i{flex:1;height:8px;border:1.5px solid var(--ink);border-radius:4px;background:var(--paper)}
+.bar i.on{background:var(--green)}.bar i.off{background:var(--red)}
+
+/* ボタン */
+.btn{border:2.5px solid var(--ink);background:var(--ink);color:var(--paper);font-family:var(--dp);font-size:1.15rem;
+  padding:10px 22px;cursor:pointer;border-radius:255px 15px 225px 15px/15px 225px 15px 255px;text-decoration:none;display:inline-block}
+.btn.ghost{background:var(--paper);color:var(--ink)}
+.btn:focus-visible{outline:3px dashed var(--pencil);outline-offset:3px}
+.btn[disabled]{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row.center{justify-content:center}
+.row.end{justify-content:flex-end}
+
+/* けっか */
+.result{text-align:center}
+.result .lvl{color:var(--pencil);margin:0}
+.result .big{font-family:var(--dp);font-size:2.6rem;line-height:1.2;margin:4px 0}
+.result .score{font-size:1.05rem;color:var(--pencil);margin:0}
+.result .msg{margin:6px 0 0}
+.namebox{margin-top:16px;text-align:left;display:grid;gap:6px}
+.namebox label{font-family:var(--dp);font-size:1.05rem}
+input[type=text]{font-family:var(--bd);font-size:1.05rem;padding:8px 10px;border:2.5px solid var(--ink);background:var(--paper);color:var(--ink);
+  border-radius:12px 200px 12px 180px/180px 12px 200px 12px;min-width:0;flex:1;width:100%}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.reg{font-family:var(--dp);font-size:1.1rem;margin:10px 0 0}
+.reg.err{color:var(--red)}
+.certwrap{margin-top:16px}
+.certwrap img{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;border:1px solid var(--line);box-shadow:0 2px 0 var(--line)}
+.note{font-size:.85rem;color:var(--pencil)}
+
+/* めいぼ */
+.meibo h3{margin:14px 0 4px;font-size:1.2rem}
+.meibo ol{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:4px 14px}
+.meibo li{font-size:.95rem}
+.meibo li small{color:var(--pencil)}
+.meibo .one{text-align:center;font-family:var(--dp);font-size:1.3rem;padding:8px 0}
+.meibo .one b{font-weight:400;font-size:2.6rem;color:var(--red);display:block;line-height:1.2}
+
+/* しつもん */
+.faq dt{font-family:var(--dp);font-size:1.1rem;margin-top:12px}
+.faq dt::before{content:"Q. ";color:var(--pencil)}
+.faq dd{margin:2px 0 0 0}
+.faq dd::before{content:"A. ";color:var(--pencil);font-family:var(--dp)}
+
+/* きょうの いちもん */
+.ichimon .when{font-family:var(--dp);color:var(--pencil);margin:0 0 4px}
+
+/* キャラクター */
+.chara{display:flex;align-items:flex-end;gap:8px}
+.chara svg{width:64px;height:64px;flex:none}
+.bubble{position:relative;border:2px solid var(--ink);background:var(--paper);font-family:var(--dp);font-size:.95rem;
+  padding:4px 10px;border-radius:14px 14px 14px 2px;line-height:1.4;white-space:nowrap;flex:none}
+header.top .chara svg{width:56px;height:56px}
+
+footer{font-size:.85rem;color:var(--pencil);text-align:center;display:grid;gap:6px}
+footer nav{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center}
+.patrol{color:var(--red)}
+.devbanner{border:2px dashed var(--red);color:var(--red);text-align:center;font-family:var(--dp);padding:4px}
+
+/* うごき：けっか だけ はでに */
+.shake{animation:sh .35s}
+@keyframes sh{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.draw path{stroke-dasharray:200;stroke-dashoffset:200;animation:draw .5s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.pop{animation:pop .6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{0%{transform:scale(.3) rotate(-12deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.rise{animation:rise .7s ease-out both}
+@keyframes rise{0%{transform:translateY(30px) rotate(-3deg);opacity:0}100%{transform:none;opacity:1}}
+.hop svg{animation:hop .8s ease-in-out 2}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-12px)}}
+@media (prefers-reduced-motion:reduce){
+  .shake,.pop,.rise,.hop svg,.draw path{animation:none}
+  .draw path{stroke-dashoffset:0}
+  .lv,.btn{transition:none}
+}
+
+/* about / privacy */
+.doc h2{font-size:1.25rem;margin:18px 0 6px}
+.doc p,.doc li{font-size:1rem}
