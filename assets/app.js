@@ -112,7 +112,24 @@ function ichimon() {
     box.querySelectorAll(".ch").forEach(x => { x.disabled = true; const xi = Number(x.dataset.ci); if (xi === ans) x.classList.add("ok"); else if (xi === ci) x.classList.add("ng"); });
     $("im-judge").innerHTML = judgeHtml(ok, it, false);
   }));
+  fitOneLine(box);
 }
+
+// せんたくしが 2ぎょうに なるときだけ、もじを すこし ちいさく（0.8ばい まで）
+function fitOneLine(box) {
+  box.querySelectorAll(".ch > span:last-child").forEach(s => {
+    s.style.fontSize = "";
+    const lh = parseFloat(getComputedStyle(s).lineHeight) || 30;
+    let size = 1;
+    while (size > 0.8 && s.getBoundingClientRect().height > lh * 1.5) {
+      size = Math.round((size - 0.05) * 100) / 100;
+      s.style.fontSize = size + "em";
+    }
+  });
+}
+const fitAll = () => ["choices", "im-choices"].forEach(id => { const b = $(id); if (b && b.offsetParent) fitOneLine(b); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+window.addEventListener("resize", fitAll);
 
 // ---- しゅつだい ---------------------------------------------
 const MARU = `<svg viewBox="0 0 64 64" fill="none" stroke="var(--green)" stroke-width="6" stroke-linecap="round"><path d="M33 9c-14 1-24 12-23 25 1 12 11 21 23 21 13 0 23-11 22-24C54 19 45 10 34 9"/></svg>`;
@@ -142,6 +159,7 @@ function show() {
   $("choices").innerHTML = order.map((ci, pos) => `<button class="ch" type="button" data-ci="${ci}"><span class="mk">${MARKS[pos]}</span><span>${ruby(it.c[ci])}</span></button>`).join("");
   $("judge").innerHTML = ""; $("next").hidden = true;
   document.querySelectorAll("#choices .ch").forEach(b => b.addEventListener("click", () => answer(Number(b.dataset.ci))));
+  fitOneLine($("choices"));
 }
 function answer(ci) {
   if (picks.length > idx) return;
